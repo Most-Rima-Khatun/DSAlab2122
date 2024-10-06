@@ -36,6 +36,7 @@ void warshall(int graph[100][100],int n){
         }cout<<"\n";
     }
     cout<<"the path matrix:"<<"\n\n";
+    int count_path = 1;
     for(int k = 0; k < n ; k++)
     {
         for(int i = 0; i < n; i++)
@@ -43,9 +44,11 @@ void warshall(int graph[100][100],int n){
             for(int j = 0; j < n ; j++)
             {
                 temp[i][j] = temp[i][j]||(temp[i][k]&&temp[k][j]);
+                count_path&=temp[i][j];
             }
         }
     }
+    
     for(int i = 0; i < n; i++)
     {
         for(int j = 0; j < n ; j++)
@@ -53,6 +56,10 @@ void warshall(int graph[100][100],int n){
             cout<<temp[i][j]<<" ";
         }cout<<"\n";
     }
+    if(count_path)
+   cout<<"strongly Connected graph"<<endl;
+   else
+   cout<<"not strongly Connected graph"<<endl;
 }
 int main()
 {
