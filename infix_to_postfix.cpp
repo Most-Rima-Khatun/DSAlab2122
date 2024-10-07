@@ -1,5 +1,29 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define MAXSTK 50
+char char_stk[MAXSTK + 1];
+int top = 0;
+
+void push(char a) {
+    if(top == MAXSTK){
+        // If stack is full
+        printf("Stack OVERFLOW!");
+    } else {
+        top ++;
+        char_stk[top] = a;
+    }
+}
+
+char pop() {
+    if(top == 0) {
+        // If stack is empty
+        printf("Stack UNDERFLOW!");
+        return -1;
+    } else {
+        top --;
+        return char_stk[top + 1];
+    } 
+}
 int optr(char c)
 {
     if(c=='^')
